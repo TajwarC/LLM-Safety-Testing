@@ -1,0 +1,44 @@
+{
+    "invariance_threshold": 0.9,
+    "perturbations": [
+        {
+            "type": "uppercase",
+            "robust_mcc": 0.32025630761017426,
+            "invariance_rate": 0.892,
+            "passed": false
+        },
+        {
+            "type": "lowercase",
+            "robust_mcc": 0.3251773181660615,
+            "invariance_rate": 0.942,
+            "passed": true
+        },
+        {
+            "type": "mixed_case",
+            "robust_mcc": 0.30637471409806694,
+            "invariance_rate": 0.858,
+            "passed": false
+        },
+        {
+            "type": "add_punctuation",
+            "robust_mcc": 0.30111278396455776,
+            "invariance_rate": 0.924,
+            "passed": true
+        },
+        {
+            "type": "remove_punctuation",
+            "robust_mcc": 0.3044579737908888,
+            "invariance_rate": 0.922,
+            "passed": true
+        },
+        {
+            "type": "add_typo",
+            "robust_mcc": 0.28259416256452347,
+            "invariance_rate": 0.908,
+            "passed": true
+        }
+    ],
+    "base_mcc": 0.3462933962313934,
+    "passed": false,
+    "timestamp": "2026-05-26T15:14:12.481158+00:00Z"
+}

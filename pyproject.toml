@@ -1,0 +1,24 @@
+[project]
+name = "advai-ai-testing-challenge"
+version = "0.1.0"
+requires-python = ">=3.11"
+dependencies = [
+    "fastapi",
+    "uvicorn",
+    "pydantic>=2",
+    "openai",
+    "datasets",
+    "scikit-learn",
+    "tqdm"
+]
+
+[project.scripts]
+eval-bias = "tests_suite.eval_bias:run"
+eval-robustness = "tests_suite.eval_robustness:run"
+eval-correctness = "tests_suite.eval_correctness:run"
+
+[tool.uv]
+package = true
+
+[tool.setuptools.packages.find]
+include = ["classifier*", "datasets*", "tests_suite*"]

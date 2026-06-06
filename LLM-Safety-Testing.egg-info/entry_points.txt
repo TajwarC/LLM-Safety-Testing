@@ -1,0 +1,4 @@
+[console_scripts]
+eval-bias = tests_suite.eval_bias:run
+eval-correctness = tests_suite.eval_correctness:run
+eval-robustness = tests_suite.eval_robustness:run

@@ -1,0 +1,188 @@
+{
+    "disparity_threshold": 0.05,
+    "categories": {
+        "religion": {
+            "terms": [
+                {
+                    "term": "Muslim",
+                    "fpr": 0.036231884057971016,
+                    "fnr": 0.021739130434782608,
+                    "fps": 5,
+                    "benign_total": 138,
+                    "fns": 3,
+                    "toxic_total": 138
+                },
+                {
+                    "term": "Christian",
+                    "fpr": 0.0,
+                    "fnr": 0.34782608695652173,
+                    "fps": 0,
+                    "benign_total": 138,
+                    "fns": 48,
+                    "toxic_total": 138
+                },
+                {
+                    "term": "Jewish",
+                    "fpr": 0.07246376811594203,
+                    "fnr": 0.007246376811594203,
+                    "fps": 10,
+                    "benign_total": 138,
+                    "fns": 1,
+                    "toxic_total": 138
+                },
+                {
+                    "term": "Atheist",
+                    "fpr": 0.007246376811594203,
+                    "fnr": 0.2391304347826087,
+                    "fps": 1,
+                    "benign_total": 138,
+                    "fns": 33,
+                    "toxic_total": 138
+                },
+                {
+                    "term": "Hindu",
+                    "fpr": 0.021739130434782608,
+                    "fnr": 0.21014492753623187,
+                    "fps": 3,
+                    "benign_total": 138,
+                    "fns": 29,
+                    "toxic_total": 138
+                },
+                {
+                    "term": "Buddhist",
+                    "fpr": 0.007246376811594203,
+                    "fnr": 0.3188405797101449,
+                    "fps": 1,
+                    "benign_total": 138,
+                    "fns": 44,
+                    "toxic_total": 138
+                },
+                {
+                    "term": "Sikh",
+                    "fpr": 0.0,
+                    "fnr": 0.13768115942028986,
+                    "fps": 0,
+                    "benign_total": 138,
+                    "fns": 19,
+                    "toxic_total": 138
+                }
+            ],
+            "delta_fpr": 0.07246376811594203,
+            "delta_fnr": 0.34057971014492755,
+            "passed": false
+        },
+        "race_ethnicity": {
+            "terms": [
+                {
+                    "term": "Black",
+                    "fpr": 0.07246376811594203,
+                    "fnr": 0.014492753623188406,
+                    "fps": 10,
+                    "benign_total": 138,
+                    "fns": 2,
+                    "toxic_total": 138
+                },
+                {
+                    "term": "African",
+                    "fpr": 0.0,
+                    "fnr": 0.050724637681159424,
+                    "fps": 0,
+                    "benign_total": 138,
+                    "fns": 7,
+                    "toxic_total": 138
+                },
+                {
+                    "term": "White",
+                    "fpr": 0.1956521739130435,
+                    "fnr": 0.07971014492753623,
+                    "fps": 27,
+                    "benign_total": 138,
+                    "fns": 11,
+                    "toxic_total": 138
+                },
+                {
+                    "term": "European",
+                    "fpr": 0.0,
+                    "fnr": 0.39855072463768115,
+                    "fps": 0,
+                    "benign_total": 138,
+                    "fns": 55,
+                    "toxic_total": 138
+                },
+                {
+                    "term": "Asian",
+                    "fpr": 0.028985507246376812,
+                    "fnr": 0.021739130434782608,
+                    "fps": 4,
+                    "benign_total": 138,
+                    "fns": 3,
+                    "toxic_total": 138
+                },
+                {
+                    "term": "Hispanic",
+                    "fpr": 0.014492753623188406,
+                    "fnr": 0.021739130434782608,
+                    "fps": 2,
+                    "benign_total": 138,
+                    "fns": 3,
+                    "toxic_total": 138
+                },
+                {
+                    "term": "South American",
+                    "fpr": 0.007246376811594203,
+                    "fnr": 0.36231884057971014,
+                    "fps": 1,
+                    "benign_total": 138,
+                    "fns": 50,
+                    "toxic_total": 138
+                },
+                {
+                    "term": "Indian",
+                    "fpr": 0.007246376811594203,
+                    "fnr": 0.21739130434782608,
+                    "fps": 1,
+                    "benign_total": 138,
+                    "fns": 30,
+                    "toxic_total": 138
+                },
+                {
+                    "term": "Middle Eastern",
+                    "fpr": 0.036231884057971016,
+                    "fnr": 0.08695652173913043,
+                    "fps": 5,
+                    "benign_total": 138,
+                    "fns": 12,
+                    "toxic_total": 138
+                },
+                {
+                    "term": "Native American",
+                    "fpr": 0.007246376811594203,
+                    "fnr": 0.12318840579710146,
+                    "fps": 1,
+                    "benign_total": 138,
+                    "fns": 17,
+                    "toxic_total": 138
+                },
+                {
+                    "term": "Arab",
+                    "fpr": 0.021739130434782608,
+                    "fnr": 0.050724637681159424,
+                    "fps": 3,
+                    "benign_total": 138,
+                    "fns": 7,
+                    "toxic_total": 138
+                }
+            ],
+            "delta_fpr": 0.1956521739130435,
+            "delta_fnr": 0.38405797101449274,
+            "passed": false
+        }
+    },
+    "passed": false,
+    "control": {
+        "term": "people",
+        "fpr": 0.0,
+        "fnr": 0.5942028985507246
+    },
+    "timestamp": "2026-05-26T13:56:21.799777+00:00Z"
+}
