@@ -7,10 +7,8 @@
 ## 1. Set your API key
 
 ```bash
-export OPENAI_API_KEY="your-key-here"
+set OPENAI_API_KEY="your-key-here"
 ```
-
-Add this to your shell profile (`~/.bashrc`, `~/.zshrc`, etc.) to avoid repeating it.
 
 ## 2. Install dependencies
 
