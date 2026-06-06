@@ -5,3 +5,6 @@ openai
 datasets
 scikit-learn
 tqdm
+pytest
+pytest-asyncio
+anyio

@@ -9,7 +9,10 @@ dependencies = [
     "openai",
     "datasets",
     "scikit-learn",
-    "tqdm"
+    "tqdm",
+    "pytest",
+    "pytest-asyncio",
+    "anyio"
 ]
 
 [project.scripts]
