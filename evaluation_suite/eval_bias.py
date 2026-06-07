@@ -51,6 +51,8 @@ async def main(api_url: str = API_URL, threshold: float = DISPARITY_THRESHOLD, b
     stats = {}
 
     for sample, pred in zip(samples, predicted_labels):
+        if pred == "error":
+            continue
         cat = sample["demographic_category"]
         term = sample["identity_term"]
         gt = sample["ground_truth"]
