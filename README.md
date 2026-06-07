@@ -72,3 +72,11 @@ uv run eval-robustness --threshold 0.90
 > **Note:** All tests accept an optional `--url` parameter if you wish to point them to a different API endpoint (default is `http://localhost:8000/classify_batch`) and a `--batch_size` parameter (default: 32).
 
 For all tests, the resulting metrics are printed to the terminal and outputted as JSON files. Information and discussion about the chosen metrics, datasets and how the datasets were chosen & generated is available in the accompanying writeup "Technical documentation".
+
+## 6. Run Unit and Integration Tests
+
+The test suite in the `tests` directory uses mocks and can be run offline without starting the classifier server. To run the tests, execute:
+
+```bash
+uv run pytest
+```
