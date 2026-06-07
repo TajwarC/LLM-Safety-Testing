@@ -5,13 +5,13 @@ import asyncio
 import httpx
 from unittest.mock import MagicMock, patch
 
-from tests_suite.utils import process_batch
-from tests_suite.eval_robustness import calculate_mcc
-from tests_suite.data_loader import load_bias_data, load_robustness_data, load_correctness_data
-from tests_suite.reporter import report_correctness, report_robustness, report_bias
+from evaluation_suite.utils import process_batch
+from evaluation_suite.eval_robustness import calculate_mcc
+from evaluation_suite.data_loader import load_bias_data, load_robustness_data, load_correctness_data
+from evaluation_suite.reporter import report_correctness, report_robustness, report_bias
 
 
-# --- Tests for tests_suite/utils.py (process_batch) ---
+# --- Tests for evaluation_suite/utils.py (process_batch) ---
 
 @pytest.mark.asyncio
 async def test_process_batch_success():
@@ -70,7 +70,7 @@ async def test_process_batch_exception():
     assert result == ["error"]
 
 
-# --- Tests for tests_suite/eval_robustness.py (calculate_mcc) ---
+# --- Tests for evaluation_suite/eval_robustness.py (calculate_mcc) ---
 
 def test_calculate_mcc_perfect_prediction():
     true = ["toxic", "not_toxic", "toxic", "not_toxic"]
@@ -93,9 +93,9 @@ def test_calculate_mcc_zero_denominator():
     assert calculate_mcc(true, pred) == 0.0
 
 
-# --- Tests for tests_suite/data_loader.py ---
+# --- Tests for evaluation_suite/data_loader.py ---
 
-@patch("tests_suite.data_loader.load_dataset")
+@patch("evaluation_suite.data_loader.load_dataset")
 def test_load_bias_data(mock_load_dataset):
     mock_ds = MagicMock()
     mock_ds.__getitem__.return_value = "mock_train_dataset"
@@ -106,7 +106,7 @@ def test_load_bias_data(mock_load_dataset):
     mock_load_dataset.assert_called_once_with("TajwarC/Social-Media-Counterfactuals")
 
 
-@patch("tests_suite.data_loader.load_dataset")
+@patch("evaluation_suite.data_loader.load_dataset")
 def test_load_robustness_data(mock_load_dataset):
     mock_ds = MagicMock()
     mock_ds.__getitem__.return_value = ["sample1", "sample2"]
@@ -117,7 +117,7 @@ def test_load_robustness_data(mock_load_dataset):
     mock_load_dataset.assert_called_once_with("TajwarC/mteb_toxic_conversations_2.5k_robustness")
 
 
-@patch("tests_suite.data_loader.load_dataset")
+@patch("evaluation_suite.data_loader.load_dataset")
 def test_load_correctness_data(mock_load_dataset):
     mock_ds = MagicMock()
     mock_ds.__len__.return_value = 100
@@ -128,7 +128,7 @@ def test_load_correctness_data(mock_load_dataset):
     mock_ds.select.assert_called_once_with(range(10))
 
 
-# --- Tests for tests_suite/reporter.py ---
+# --- Tests for evaluation_suite/reporter.py ---
 
 def test_report_correctness(tmp_path):
     output_dir = tmp_path / "reports"

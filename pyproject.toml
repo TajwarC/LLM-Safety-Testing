@@ -12,16 +12,17 @@ dependencies = [
     "tqdm",
     "pytest",
     "pytest-asyncio",
-    "anyio"
+    "anyio",
+    "google-genai>=2.8.0",
 ]
 
 [project.scripts]
-eval-bias = "tests_suite.eval_bias:run"
-eval-robustness = "tests_suite.eval_robustness:run"
-eval-correctness = "tests_suite.eval_correctness:run"
+eval-bias = "evaluation_suite.eval_bias:run"
+eval-robustness = "evaluation_suite.eval_robustness:run"
+eval-correctness = "evaluation_suite.eval_correctness:run"
 
 [tool.uv]
 package = true
 
 [tool.setuptools.packages.find]
-include = ["classifier*", "datasets*", "tests_suite*"]
+include = ["classifier*", "datasets*", "evaluation_suite*"]
