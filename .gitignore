@@ -181,4 +181,5 @@ cython_debug/
 # PyPI configuration file
 .pypirc
 
-*.egg-info
+# LLM-Safety-Testing
+LLM-Safety-Testing.egg-info/
