@@ -18,9 +18,45 @@ uv sync
 
 ## 3. Start the classifier
 
+By default, the server runs with the Gemini model backend. You can start the server using the entrypoint script:
+
+```bash
+uv run start-classifier --port 8000
+```
+
+Alternatively, you can run the FastAPI application directly using `uvicorn`:
 ```bash
 uv run uvicorn classifier.main:app --port 8000
 ```
+
+### Model Backend Configuration
+The server supports multiple backend models (Gemini, OpenAI, Hugging Face). You can select the backend using command-line arguments or by setting environment variables in your `.env` file (`CLASSIFIER_TYPE`, `CLASSIFIER_MODEL`, `CLASSIFIER_DEVICE`).
+
+#### Gemini (Default)
+```bash
+uv run start-classifier --model gemini-3.1-flash-lite
+```
+
+#### OpenAI GPT
+Ensure you have set `OPENAI_API_KEY` in your environment or `.env` file.
+```bash
+uv run start-classifier --model gpt-4o-mini --type openai
+```
+
+#### Hugging Face Models
+You can run local evaluations on Hugging Face models. The refactored Hugging Face classifier includes dedicated, explicit model scripts to handle inference and label mapping:
+
+- **Toxic BERT (`unitary/toxic-bert`)**:
+  Utilizes sequence classification and maps toxic labels (such as `toxic`, `severe_toxic`, `obscene`, `threat`, `insult`, `identity_hate`) to `toxic` or `not_toxic`.
+  ```bash
+  uv run start-classifier --model unitary/toxic-bert --device cpu
+  ```
+
+- **Llama Guard (`meta-llama/LlamaGuard-7b`)**:
+  Loads Llama Guard as a causal text-generation model, formats the prompt for the safety policy task, and maps generated outputs (`unsafe`/`safe`) to `toxic` or `not_toxic`.
+  ```bash
+  uv run start-classifier --model meta-llama/LlamaGuard-7b --device cpu
+  ```
 
 The classifier is now available at `http://localhost:8000`. Leave this running.
 

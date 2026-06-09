@@ -185,3 +185,6 @@ cython_debug/
 LLM-Safety-Testing.egg-info/
 
 GEMINI.md
+
+#ignore reports
+reports/

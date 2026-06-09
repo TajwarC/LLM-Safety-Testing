@@ -104,8 +104,8 @@ async def test_huggingface_classifier_standard(monkeypatch):
     mock_pipe = MagicMock()
     mock_pipe.return_value = [{"label": "toxic", "score": 0.99}]
     
-    # Mock pipeline function call in huggingface module
-    monkeypatch.setattr("classifier.huggingface.pipeline", lambda *args, **kwargs: mock_pipe)
+    # Mock pipeline function call in toxic_bert module
+    monkeypatch.setattr("classifier.toxic_bert.pipeline", lambda *args, **kwargs: mock_pipe)
 
     clf = HuggingFaceClassifier(model_name_or_path="unitary/toxic-bert", device="cpu")
     
@@ -128,8 +128,8 @@ async def test_huggingface_classifier_llamaguard(monkeypatch):
     mock_pipe = MagicMock()
     mock_pipe.return_value = [{"generated_text": "unsafe\n01,02"}]
     
-    # Mock pipeline function call in huggingface module
-    monkeypatch.setattr("classifier.huggingface.pipeline", lambda *args, **kwargs: mock_pipe)
+    # Mock pipeline function call in llamaguard module
+    monkeypatch.setattr("classifier.llamaguard.pipeline", lambda *args, **kwargs: mock_pipe)
 
     clf = HuggingFaceClassifier(model_name_or_path="meta-llama/LlamaGuard-7b", device="cpu")
     
