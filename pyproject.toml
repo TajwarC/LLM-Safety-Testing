@@ -1,5 +1,5 @@
 [project]
-name = "advai-ai-testing-challenge"
+name = "llm-safety-testing"
 version = "0.1.0"
 requires-python = ">=3.11"
 dependencies = [
@@ -14,12 +14,16 @@ dependencies = [
     "pytest-asyncio",
     "anyio",
     "google-genai>=2.8.0",
+    "transformers>=5.10.2",
+    "torch>=2.12.0",
+    "accelerate>=1.13.0",
 ]
 
 [project.scripts]
 eval-bias = "evaluation_suite.eval_bias:run"
 eval-robustness = "evaluation_suite.eval_robustness:run"
 eval-correctness = "evaluation_suite.eval_correctness:run"
+start-classifier = "classifier.main:start"
 
 [tool.uv]
 package = true

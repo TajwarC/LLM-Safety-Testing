@@ -1,3 +1,0 @@
-classifier
-datasets
-tests_suite

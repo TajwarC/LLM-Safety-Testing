@@ -73,3 +73,75 @@ async def test_classify_batch_endpoint(monkeypatch):
     }
     
     assert mock_generate.call_count == 2
+
+
+from classifier.openai import OpenAIClassifier
+from classifier.huggingface import HuggingFaceClassifier
+
+@pytest.mark.asyncio
+async def test_openai_classifier(monkeypatch):
+    mock_parse = AsyncMock()
+    mock_choice = MagicMock()
+    mock_choice.message.parsed = ClassifyResponse(label="toxic")
+    mock_resp = MagicMock()
+    mock_resp.choices = [mock_choice]
+    mock_parse.return_value = mock_resp
+
+    clf = OpenAIClassifier(api_key="mock-key", model_name="gpt-4o-mini")
+    monkeypatch.setattr(clf.client.beta.chat.completions, "parse", mock_parse)
+
+    resp = await clf.classify("some input")
+    assert resp.label == "toxic"
+
+    mock_parse.assert_called_once()
+    called_kwargs = mock_parse.call_args[1]
+    assert called_kwargs["model"] == "gpt-4o-mini"
+    assert called_kwargs["response_format"] == ClassifyResponse
+
+
+@pytest.mark.asyncio
+async def test_huggingface_classifier_standard(monkeypatch):
+    mock_pipe = MagicMock()
+    mock_pipe.return_value = [{"label": "toxic", "score": 0.99}]
+    
+    # Mock pipeline function call in huggingface module
+    monkeypatch.setattr("classifier.huggingface.pipeline", lambda *args, **kwargs: mock_pipe)
+
+    clf = HuggingFaceClassifier(model_name_or_path="unitary/toxic-bert", device="cpu")
+    
+    resp = await clf.classify("some input")
+    assert resp.label == "toxic"
+    mock_pipe.assert_called_with("some input")
+
+    # Test batch
+    mock_pipe.return_value = [
+        {"label": "toxic", "score": 0.99},
+        {"label": "not_toxic", "score": 0.01}
+    ]
+    resp_batch = await clf.classify_batch(["input1", "input2"])
+    assert resp_batch.results[0].label == "toxic"
+    assert resp_batch.results[1].label == "not_toxic"
+
+
+@pytest.mark.asyncio
+async def test_huggingface_classifier_llamaguard(monkeypatch):
+    mock_pipe = MagicMock()
+    mock_pipe.return_value = [{"generated_text": "unsafe\n01,02"}]
+    
+    # Mock pipeline function call in huggingface module
+    monkeypatch.setattr("classifier.huggingface.pipeline", lambda *args, **kwargs: mock_pipe)
+
+    clf = HuggingFaceClassifier(model_name_or_path="meta-llama/LlamaGuard-7b", device="cpu")
+    
+    resp = await clf.classify("some input")
+    assert resp.label == "toxic"
+
+    # Test batch
+    mock_pipe.return_value = [
+        {"generated_text": "unsafe\n01"},
+        {"generated_text": "safe"}
+    ]
+    resp_batch = await clf.classify_batch(["input1", "input2"])
+    assert resp_batch.results[0].label == "toxic"
+    assert resp_batch.results[1].label == "not_toxic"
+

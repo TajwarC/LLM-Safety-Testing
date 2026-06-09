@@ -1,13 +1,13 @@
 {
-    "tp": 201,
-    "fp": 548,
-    "fn": 143,
-    "tn": 3204,
-    "precision": 0.2683578104138852,
-    "recall": 0.5843023255813954,
-    "mcc": 0.31445659858246483,
+    "tp": 0,
+    "fp": 0,
+    "fn": 0,
+    "tn": 0,
+    "precision": 0.0,
+    "recall": 0.0,
+    "mcc": 0.0,
     "mcc_threshold": 0.5,
     "precision_threshold": 0.8,
     "passed": false,
-    "timestamp": "2026-05-26T15:45:42.942288+00:00Z"
+    "timestamp": "2026-06-07T17:19:01.118304+00:00Z"
 }

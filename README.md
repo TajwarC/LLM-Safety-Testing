@@ -2,12 +2,12 @@
 
 - [uv](https://docs.astral.sh/uv/getting-started/installation/) installed
 - Python 3.11+
-- An OpenAI API key
+- A Google Gemini API key
 
 ## 1. Set your API key
 
 ```bash
-set OPENAI_API_KEY="your-key-here"
+set GEMINI_API_KEY="your-key-here"
 ```
 
 ## 2. Install dependencies
@@ -28,16 +28,25 @@ The classifier is now available at `http://localhost:8000`. Leave this running.
 
 In a second terminal:
 
+**Linux / macOS / Git Bash:**
 ```bash
-curl -s http://localhost:8000/health
 curl -s -X POST http://localhost:8000/classify_batch \
   -H "Content-Type: application/json" \
   -d '{"texts": ["I hope you have a great day", "I hate you"]}'
 ```
 
+**Windows (Command Prompt):**
+```cmd
+curl -s -X POST http://localhost:8000/classify_batch -H "Content-Type: application/json" -d "{\"texts\": [\"I hope you have a great day\", \"I hate you\"]}"
+```
+
+**Windows (PowerShell):**
+```powershell
+Invoke-RestMethod -Uri http://localhost:8000/classify_batch -Method Post -ContentType "application/json" -Body '{"texts": ["I hope you have a great day", "I hate you"]}'
+```
+
 Expected:
 ```json
-{"status": "ok"}
 {"results": [{"label": "not_toxic"}, {"label": "toxic"}]}
 ```
 
