@@ -44,7 +44,7 @@ uv run start-classifier --model gpt-4o-mini --type openai
 ```
 
 #### Hugging Face Models
-You can run local evaluations on Hugging Face models. The refactored Hugging Face classifier includes dedicated, explicit model scripts to handle inference and label mapping:
+You can run local evaluations on Hugging Face models. The Hugging Face classifier includes dedicated, explicit model scripts to handle inference and label mapping:
 
 - **Toxic BERT (`unitary/toxic-bert`)**:
   Utilizes sequence classification and maps toxic labels (such as `toxic`, `severe_toxic`, `obscene`, `threat`, `insult`, `identity_hate`) to `toxic` or `not_toxic`.
